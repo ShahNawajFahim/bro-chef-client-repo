@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Image } from 'react-bootstrap';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import logo from '../../../images/imgonline-com-ua-resize-3P4Vn14urWi2ErU.jpg';
 
 const Header = () => {
+    const { user, logout } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logout()
+            .then()
+            .catch()
+    }
     return (
-        <div className="navbar bg-base-100 mb-12 pt-5">
+        <div className="navbar bg-black mb-12 mt-5 rounded-xl">
             <div className="navbar-start ">
                 <div className="dropdown ">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -13,7 +23,9 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 ">
                         <li><a href='/'>Home</a></li>
 
-                        <li><a href='/'>Item 3</a></li>
+                        <li>
+
+                        </li>
                     </ul>
                 </div>
                 <Link href='/' className="btn btn-ghost normal-case text-xl"><img src={logo} alt='' /></Link>
@@ -26,8 +38,30 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a href='/login' className="btn mr-1">Login</a>
-                <a href='/signup' className="btn">Sign up</a>
+                <li>
+                    {user?.photoURL ?
+                        <Image
+                            style={{ height: '40px' }}
+                            roundedCircle
+                            src={user?.photoURL}>
+                        </Image>
+                        : <FaUser></FaUser>
+                    }
+
+                    {
+                        user?.uid ?
+                            <>
+                                <span>{user?.displayName}</span>
+                                <button className="btn btn-outline btn-warning font-semibold" onClick={handleLogOut}>Logout</button>
+                            </>
+                            :
+                            <>
+                                <Link to='/login'>Login</Link>
+                                <Link to='/signup'>Signup</Link>
+                            </>
+                    }
+                </li>
+
             </div>
         </div>
     );
