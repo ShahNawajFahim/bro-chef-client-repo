@@ -4,7 +4,7 @@ import img from '../../../images/about-image/291bd39c9f1a29dd482c0717f0ac62ba.jp
 
 const About = () => {
     return (
-        <div className="hero min-h-screen bg-stone-400 rounded-xl mb-12">
+        <div className="hero min-h-screen bg-stone-400 rounded-xl mb-12" data-aos="fade-up-left">
             <div className="hero-content flex-col lg:flex-row-reverse mx-12">
                 <img src={img} className="max-w-sm rounded-lg shadow-2xl" />
                 <div className='text-black'>
