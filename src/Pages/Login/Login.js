@@ -1,13 +1,23 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-import { FaGoogle } from "react-icons/fa";
+import { authToken } from '../../Token/Token';
+
+
+
+
 
 const Login = () => {
 
     const { login, providerLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
+    const from = location.state?.from?.pathname || '/';
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -17,17 +27,21 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                authToken(user)
+                navigate(from, { replace: true });
+
             })
-            .catch(err => console.error(err));
+            .catch(error => console.log(error));
     }
+
     const googleProvider = new GoogleAuthProvider()
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
-                const user = result.user
-                console.log(user);
+                const user = result.user;
+                authToken(user)
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
     }
@@ -60,13 +74,14 @@ const Login = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button type='submit' className="btn btn-primary">Login</button>
+                            <button type='submit' className="btn btn-primary mb-3">Login</button>
                             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='mb-2 px-5'> Login With Google</Button>
                         </div>
                     </form>
                     <p className='text-center mb-3'>Don't have an account ? <Link to='/signup' className='text-primary ' >SignUp</Link></p>
 
                 </div>
+
             </div>
         </div>
 

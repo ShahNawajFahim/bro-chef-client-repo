@@ -70,8 +70,8 @@ const FormReview = () => {
                     </div>
 
                     <input type="email" defaultValue={user?.email} className="input input-bordered input-xs w-full max-w-xs mb-1 text-center" readOnly /> <br />
-                    <span className='font-bold text-black'>NAME:</span> <input type="text" name="Name" placeholder="type your name" className="input input-bordered input-sm  max-w-xs mb-1 bg-white text-black" /><br />
-                    <textarea type="text" name="message" className="textarea textarea-info bg-white text-black rounded-xl w-3/6" placeholder="start typing comment"></textarea><br />
+                    <span className='font-bold text-black'>NAME:</span> <input type="text" name="Name" placeholder="type your name" className="input input-bordered input-sm  max-w-xs mb-1 bg-white text-black" required /><br />
+                    <textarea type="text" name="message" className="textarea textarea-info bg-white text-black rounded-xl w-3/6" placeholder="start typing comment" required></textarea><br />
                     {
                         user?.email ? <input className='btn btn-info mb-12 font-bold' type="submit" value="POST" /> :
                             <Link to='/login' className='btn btn-info mb-12 font-bold'>POST</Link>

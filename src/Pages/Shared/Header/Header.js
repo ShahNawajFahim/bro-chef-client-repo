@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Image } from 'react-bootstrap';
+
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
@@ -13,55 +13,53 @@ const Header = () => {
             .then()
             .catch()
     }
+    const menuItems = <>
+        <li className='font-semibold'>
+            <Link to={'/'}>Home</Link>
+            <Link to={'/services'}>Services</Link>
+            <Link to={'/blogs'}>Blog</Link>
+            <Link to={'/myreview'}><button className="btn btn-outline btn-warning">My Review</button></Link>
+        </li>
+    </>
     return (
-        <div className="navbar bg-black mb-12 mt-5 rounded-xl">
-            <div className="navbar-start ">
-                <div className="dropdown ">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow  rounded-box w-52 ">
-                        <li><a href='/'>Home</a></li>
-
-                        <li>
-
-                        </li>
+        <div className="navbar h-20 mb-12 bg-base-100">
+            <div className="navbar-start">
+                <div className="dropdown">
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        {menuItems}
                     </ul>
+
                 </div>
-                <Link href='/' className="btn btn-ghost normal-case text-xl"><img src={logo} alt='' /></Link>
+                <img src={logo} alt="" className='w-20 rounded' />
+                <Link className="btn btn-ghost normal-case text-xl">
+                    <p className='font-bold '>Chef Steps</p>
+                </Link>
+
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li><a href='/'>Home</a></li>
-
-                    <li><a href='/'>Item 3</a></li>
+                    {menuItems}
                 </ul>
+
             </div>
             <div className="navbar-end">
-                <li>
-                    {user?.photoURL ?
-                        <Image
-                            style={{ height: '40px' }}
-                            roundedCircle
-                            src={user?.photoURL}>
-                        </Image>
-                        : <FaUser></FaUser>
-                    }
+                {user?.photoURL ?
+                    <img src={user?.photoURL} alt="" style={{ height: '50px' }} className='rounded-full mr-5' />
+                    : <FaUser className='mr-4'></FaUser>
+                }
 
-                    {
-                        user?.uid ?
-                            <>
-                                <span>{user?.displayName}</span>
-                                <button className="btn btn-outline btn-warning font-semibold" onClick={handleLogOut}>Logout</button>
-                            </>
-                            :
-                            <>
-                                <Link to='/login'>Login</Link>
-                                <Link to='/signup'>Signup</Link>
-                            </>
-                    }
-                </li>
-
+                {
+                    user?.uid ?
+                        <>
+                            <span className='mr-4'>{user?.displayName}</span>
+                            <button className="btn btn-outline btn-warning font-semibold align-middle" onClick={handleLogOut}>Logout</button>
+                        </>
+                        :
+                        <>
+                            <Link to='/login' className='mr-4'>Login</Link>
+                            <Link to='/signup' className='mr-4'>Signup</Link>
+                        </>
+                }
             </div>
         </div>
     );

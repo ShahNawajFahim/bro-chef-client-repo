@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import FormReview from './Review/FormReview/FormReview';
-import ShowReview from './Review/ShowReview/ShowReview';
+import MapReview from './Review/MapReview/MapReview';
+
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ const ServiceDetails = () => {
 
             <div>
                 <FormReview></FormReview>
-                <ShowReview></ShowReview>
+                <MapReview></MapReview>
             </div>
 
 

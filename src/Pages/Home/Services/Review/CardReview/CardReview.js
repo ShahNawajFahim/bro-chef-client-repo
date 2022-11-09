@@ -1,14 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
 
 
-const ShowReview = () => {
+const CardReview = ({ review }) => {
+    console.log(review);
 
-
-    const reviews = useLoaderData();
-    // console.log(reviews);
-
-    const { UserImg, message, customer, serviceName, email } = reviews;
+    const { UserImg, message, customer, serviceName, email } = review;
 
     return (
         <div className=''>
@@ -26,4 +22,4 @@ const ShowReview = () => {
     );
 };
 
-export default ShowReview;
+export default CardReview;
