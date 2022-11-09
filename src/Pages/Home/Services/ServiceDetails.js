@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import FormReview from './Review/FormReview/FormReview';
+import ShowReview from './Review/ShowReview/ShowReview';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     console.log(user)
     const service = useLoaderData();
-    const { _id, name, picture, price, detail } = service;
+    const { name, picture, price, detail } = service;
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-xl">
@@ -27,6 +28,7 @@ const ServiceDetails = () => {
 
             <div>
                 <FormReview></FormReview>
+                <ShowReview></ShowReview>
             </div>
 
 
