@@ -18,11 +18,11 @@ const Header = () => {
             <Link to={'/'}>Home</Link>
             <Link to={'/services'}>Services</Link>
             <Link to={'/blogs'}>Blog</Link>
-            <Link to={'/myreview'}><button className="btn btn-outline btn-warning">My Review</button></Link>
+            <Link to={'/myreview'}>My Review</Link>
         </li>
     </>
     return (
-        <div className="navbar h-20 mb-12 bg-base-100">
+        <div className="navbar h-20 mb-12 bg-black mt-5 rounded-xl ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
@@ -32,7 +32,7 @@ const Header = () => {
                 </div>
                 <img src={logo} alt="" className='w-20 rounded' />
                 <Link className="btn btn-ghost normal-case text-xl">
-                    <p className='font-bold '>Chef Steps</p>
+                    <p className='font-bold '>Bro Chef</p>
                 </Link>
 
             </div>
@@ -52,12 +52,12 @@ const Header = () => {
                     user?.uid ?
                         <>
                             <span className='mr-4'>{user?.displayName}</span>
-                            <button className="btn btn-outline btn-warning font-semibold align-middle" onClick={handleLogOut}>Logout</button>
+                            <button className="btn btn-outline btn-accent font-semibold align-middle" onClick={handleLogOut}>Logout</button>
                         </>
                         :
                         <>
-                            <Link to='/login' className='mr-4'>Login</Link>
-                            <Link to='/signup' className='mr-4'>Signup</Link>
+                            <Link to='/login' className='mr-4 btn-outline btn-primary font-bold p-4 rounded-xl'>Login</Link>
+                            <Link to='/signup' className='mr-4 btn-outline btn-primary font-bold p-4 rounded-xl'>Signup</Link>
                         </>
                 }
             </div>

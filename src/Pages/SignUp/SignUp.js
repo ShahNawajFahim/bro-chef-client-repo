@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
@@ -24,7 +25,7 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
-
+            <div><Spinner animation="border" variant="success" /></div>
             <div className="hero-content">
                 <h1 className="text-5xl font-bold">Sign Up now!</h1>
                 <div className="card w-full max-w-sm shadow-2xl bg-base-100">
