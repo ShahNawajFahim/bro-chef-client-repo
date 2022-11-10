@@ -1,6 +1,7 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
@@ -29,7 +30,27 @@ const Login = () => {
         login(email, password)
             .then(result => {
                 const user = result.user;
-                authToken(user)
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                        localStorage.setItem('Bro-Chef-token', data.token);
+                    });
+                form.reset();
                 navigate(from, { replace: true });
 
             })
@@ -42,7 +63,26 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                authToken(user)
+                const currentUser = {
+                    email: user.email
+                }
+
+                console.log(currentUser);
+
+
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+
+                        localStorage.setItem('Bro-Chef-token', data.token);
+                    });
                 navigate(from, { replace: true });
             })
             .catch(error => console.error(error))

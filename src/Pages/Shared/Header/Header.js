@@ -17,7 +17,7 @@ const Header = () => {
         <li className='font-semibold'>
             <Link to={'/'}>Home</Link>
             <Link to={'/services'}>Services</Link>
-            <Link to={'/blogs'}>Blog</Link>
+            <Link to={'/blog'}>Blog</Link>
             <Link to={'/myreview'}>My Review</Link>
         </li>
     </>
@@ -31,7 +31,7 @@ const Header = () => {
 
                 </div>
                 <img src={logo} alt="" className='w-20 rounded' />
-                <Link className="btn btn-ghost normal-case text-xl">
+                <Link to='/' className="btn btn-ghost normal-case text-xl">
                     <p className='font-bold '>Bro Chef</p>
                 </Link>
 

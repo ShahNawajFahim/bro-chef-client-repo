@@ -86,6 +86,7 @@ const MyReview = () => {
                                 handleStatusUpdate={handleStatusUpdate}
                             ></ReviewRow>)
                         }
+
                     </tbody>
                 </table>
             </div>
