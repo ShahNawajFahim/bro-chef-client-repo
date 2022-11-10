@@ -33,7 +33,7 @@ const MyReview = () => {
             fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    authorization: `Bearer ${localStorage.getItem('chef-steps')}`
+                    authorization: `Bearer ${localStorage.getItem('Bro-chef')}`
                 }
             })
                 .then(res => res.json())
