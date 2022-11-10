@@ -52,7 +52,7 @@ const MyReview = () => {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('chef-steps')}`
+                authorization: `Bearer ${localStorage.getItem('Bro-chef')}`
             },
             body: JSON.stringify({ status: 'Approved' })
         })
@@ -70,8 +70,22 @@ const MyReview = () => {
             })
     }
 
+
+    const msg = reviews.length;
+
+    if (msg < 1) {
+        return <h1 className="text-5xl text-center mb-12 font-bold">No review found</h1>
+    }
+
+
+
+
     return (
         <div>
+
+
+
+
             <div className='flex justify-center my-16'>
                 <h1 className='text-5xl font-bold'>My Reviews</h1>
             </div>
@@ -86,6 +100,8 @@ const MyReview = () => {
                                 handleStatusUpdate={handleStatusUpdate}
                             ></ReviewRow>)
                         }
+
+
 
                     </tbody>
                 </table>

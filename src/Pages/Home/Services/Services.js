@@ -14,7 +14,7 @@ const Services = () => {
     return (
         <div>
             <div className='text-center'>
-                <h2 className='text-5xl font-bold mb-2 mt-10'>  Our Service Area</h2>
+                <h2 className='text-5xl font-bold mb-2 mt-10'>Service Area</h2>
                 <p className='mb-10'>We specialized in intimate catering. Think about your <br></br>
                     last party.It was probably a great time with <br></br> amazing friends.
                 </p>
